@@ -1,66 +1,103 @@
-import Pokemon from "./poke_class.js";
-// let porcha = new Pokemon('porcha',100,10)
-// let popcorn = new Pokemon('popcorn',100,10)
-// let cha =new Pokemon('cha',50,20)
-// let pop =new Pokemon('pop',50,10)
-function battle(one,two){
-//    let ten = 1
-// while (ten<=10){
-// console.log(`=====${ten}=====`)
-// let random=Math.floor(Math.random()*(10-1+1)+1)
-// if(random % 2 ===0){
-//     console.log(`${one.name} attack ${two.name}`)
-// two.setHp(two.getHp()-one.getAtk())
-// if(two.getHp()<=0){
-//      console.log(`${one.name} Win!!`)
-//     return`${one.name} Win!!!`
-// }
-// two.getInfo()
-// }
-// else{
-//     console.log(`${two.name} attack ${one.name}`)
-//     one.setHp(one.getHp()-two.getAtk())
-//     if(one.getHp()<=0){
-//         console.log(`${two.name} Win!!!`)
-//         return `${two.name} Win!!!`
-//     }
-//     one.getInfo()
-    
-// }
-// ten ++
-// }
-// console.log('=====END=====')
-// one.getInfo()
-// two.getInfo()
-// if(one.getHp()===two.getHp()){
-//     console.log("Draw") 
-// }
-// else if(one.getHp()>two.getHp()){
-//     console.log(`${one.getName()} Win!!!`)
-// }
-// else 
-// console.log(`${two.getName()} Win !!!`)
-let ten = 1
-while (ten<=10){
-let random =Math.floor(Math.random*(10-1+1)+1)
-if(random%2===0){
-two.setHp(two.getHp()-one.getAtk())
-if(two.getHp()<=0){
-    return`${one.name} Win!!!`
-}
-two.getInfo()
-}
-else 
-one.setHp(one.getHp()-two.getAtk())
-if(one.getHp()<=0){
-            console.log(`${two.name} Win!!!`)
-            return `${two.name} Win!!!`
-            one.getInfo()
-        }
-     
-        ten ++
-}
+import poke from './pokemon.json' assert { type: "json" };
+import pokeImg from './pokemon-images.json' assert { type: "json" };
 
+
+
+let imgCount=0
+let parent =document.getElementById('poke_card')
+let parentText=document.getElementById('poke_info')
+let bigParent =document.querySelector('.container')
+
+
+let newImg=document.createElement('img')
+newImg.src=pokeImg[poke[0].name.english]
+
+let newP=document.createElement('p')
+newP.textContent=poke[0].name.english
+
+let newDiv=document.createElement('div')
+newDiv.className='btn'
+
+let button1=document.createElement('button')
+button1.className='prev_btn'
+button1.textContent='prev'
+
+let button2=document.createElement('button')
+button2.className='next_btn'
+button2.textContent='next'
+
+parent.appendChild(newImg)
+parentText.appendChild(newP)
+parent.insertBefore(newImg,parentText)
+newDiv.appendChild(button1)
+newDiv.appendChild(button2)
+bigParent.appendChild(newDiv)
+
+button1.addEventListener('click',()=>{
+imgCount--
+if(imgCount<0){
+    imgCount=5
 }
-battle(porcha,popcorn)
+newP.textContent=poke[imgCount].name.english
+newImg.src=pokeImg[poke[imgCount].name.english]
+
+})
+
+button2.addEventListener('click',()=>{
+    imgCount++
+    if(imgCount>5){
+        imgCount=0
+    }
+newP.textContent=poke[imgCount].name.english
+newImg.src=pokeImg[poke[imgCount].name.english]
+})
+
+
+//พี่ทำ
+// let imgCount=0
+
+// let divCard = document.getElementById('poke_card')
+// let divInfo =document.getElementById('poke_info')
+// let divCon=document.getElementsByClassName('container')
+
+
+// let newImg = document.createElement('img')
+// let newP=document.createElement('p')
+// let divBt=document.createElement('div')
+// let btn_prev=document.createElement('button')
+// let btn_next=document.createElement('button')
+
+// newImg.src=pokeImg[poke[0].name.english]
+// newP.textContent=poke[0].name.japanese
+// divBt.className='btn'
+// btn_prev.className='prev_btn'
+// btn_next.className='next_btn'
+// btn_prev.textContent='prev'
+// btn_next.textContent='next'
+
+// divCard.appendChild(newImg)
+// divCard.appendChild(newImg)
+// divCard.insertBefore(newImg,divInfo)
+// divInfo.append(newP)
+// divCon[0].append(divBt)
+// divBt.append(btn_prev)
+// divBt.append(btn_next)
+
+// btn_next.addEventListener('click',()=>{
+//     imgCount++
+//     if(imgCount>5){
+//         imgCount=0
+//     }
+//    newP.textContent=poke[imgCount].name.japanese
+//    newImg.src=pokeImg[poke[imgCount].name.english]
+// })
+// btn_prev.addEventListener('click',()=>{
+//     imgCount--
+//     if(imgCount<0){
+//         imgCount=5
+//     }
+//    newP.textContent=poke[imgCount].name.japanese
+//    newImg.src=pokeImg[poke[imgCount].name.english]
+// })
+
 
