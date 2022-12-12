@@ -2,102 +2,101 @@ import poke from './pokemon.json' assert { type: "json" };
 import pokeImg from './pokemon-images.json' assert { type: "json" };
 
 
+let parent =document.getElementById('pokedex')
 
-let imgCount=0
-let parent =document.getElementById('poke_card')
-let parentText=document.getElementById('poke_info')
-let bigParent =document.querySelector('.container')
-
-
-let newImg=document.createElement('img')
-newImg.src=pokeImg[poke[0].name.english]
+for(let i=0;i<150;i++){
+let newDiv=document.createElement('div')
+newDiv.className='pokeCard'
 
 let newP=document.createElement('p')
-newP.textContent=poke[0].name.english
-
-let newDiv=document.createElement('div')
-newDiv.className='btn'
-
-let button1=document.createElement('button')
-button1.className='prev_btn'
-button1.textContent='prev'
-
-let button2=document.createElement('button')
-button2.className='next_btn'
-button2.textContent='next'
-
-parent.appendChild(newImg)
-parentText.appendChild(newP)
-parent.insertBefore(newImg,parentText)
-newDiv.appendChild(button1)
-newDiv.appendChild(button2)
-bigParent.appendChild(newDiv)
-
-button1.addEventListener('click',()=>{
-imgCount--
-if(imgCount<0){
-    imgCount=5
+newP.textContent=poke[i].name.english
+let newImg=document.createElement('img')
+newImg.className='pokeImg'
+newImg.src=pokeImg[poke[i].name.english]
+// newImg.setAttributeNode('src')
+// let newDivCall=document.getElementsByClassName('pokeCard')
+// console.log(newDivCall)
+newDiv.appendChild(newImg)
+newDiv.appendChild(newP)
+parent.appendChild(newDiv)
 }
-newP.textContent=poke[imgCount].name.english
-newImg.src=pokeImg[poke[imgCount].name.english]
+// let newDiv=document.createElement('div')
+// newDiv.className='pokeCard'
 
-})
+// let newP=document.createElement('p')
+// newP.textContent=poke[0].name.english
+// let newImg=document.createElement('img')
+// newImg.className='pokeImg'
+// newImg.src=pokeImg[poke[0].name.english]
+// newImg.setAttributeNode('src')
+// let newDivCall=document.getElementsByClassName('pokeCard')
+// console.log(newDivCall)
+// newDiv.appendChild(newImg)
+// newDiv.appendChild(newP)
+// parent.appendChild(newDiv)
 
-button2.addEventListener('click',()=>{
-    imgCount++
-    if(imgCount>5){
-        imgCount=0
-    }
-newP.textContent=poke[imgCount].name.english
-newImg.src=pokeImg[poke[imgCount].name.english]
-})
-
+// console.log(poke[0].name.japanese)
+// console.log(pokeImg[poke[0].name.english])
 
 //พี่ทำ
-// let imgCount=0
+// let divPoke=document.getElementById("pokedex")
+// let newDiv = document.createElement("div")
+// newDiv.className='pokecard'
+// divPoke.appendChild(newDiv)
 
-// let divCard = document.getElementById('poke_card')
-// let divInfo =document.getElementById('poke_info')
-// let divCon=document.getElementsByClassName('container')
-
-
-// let newImg = document.createElement('img')
-// let newP=document.createElement('p')
-// let divBt=document.createElement('div')
-// let btn_prev=document.createElement('button')
-// let btn_next=document.createElement('button')
-
+//สร้าง img
+// let newImg=document.createElement('img')
+// newImg.className='pokeImg'
+//ละเอียด
+// let newSrc=document.createAttribute('src')
+// newSrc.value=pokeImg[poke[0].name.english]
+// newImg.setAttribute('src',pokeImg[poke[0].name.english])
+//setAttribute ต้องใส่สองค่าคือชื่อattributeและvalue
+//setAttributeNode ใส่แต่ชื่อได้
+//ลัด
 // newImg.src=pokeImg[poke[0].name.english]
-// newP.textContent=poke[0].name.japanese
-// divBt.className='btn'
-// btn_prev.className='prev_btn'
-// btn_next.className='next_btn'
-// btn_prev.textContent='prev'
-// btn_next.textContent='next'
 
-// divCard.appendChild(newImg)
-// divCard.appendChild(newImg)
-// divCard.insertBefore(newImg,divInfo)
-// divInfo.append(newP)
-// divCon[0].append(divBt)
-// divBt.append(btn_prev)
-// divBt.append(btn_next)
+// let newPe=document.createElement("p")
+// newPe.innerText=poke[0].name.japanese
+// newDiv.appendChild(newImg)
+// newDiv.appendChild(newPe)
+// divPoke.appendChild(newDiv)
 
-// btn_next.addEventListener('click',()=>{
-//     imgCount++
-//     if(imgCount>5){
-//         imgCount=0
-//     }
-//    newP.textContent=poke[imgCount].name.japanese
-//    newImg.src=pokeImg[poke[imgCount].name.english]
-// })
-// btn_prev.addEventListener('click',()=>{
-//     imgCount--
-//     if(imgCount<0){
-//         imgCount=5
-//     }
-//    newP.textContent=poke[imgCount].name.japanese
-//    newImg.src=pokeImg[poke[imgCount].name.english]
-// })
+//เราทำเอง
+// const newDiv=document.createElement("div")
+// newDiv.setAttribute('class','pokeCard')
+// const addDiv=document.getElementById("pokedex")
+// addDiv.appendChild(newDiv)
+// const newImg=document.createElement("img")
+// newImg.setAttribute('class','pokeImg')
+// newImg.setAttribute('src')
+
+// const newPe=document.createElement("p")
+// newPe.innerText('porcha')
 
 
+//get ตั้งแต่ html 
+
+// let temp=document.querySelector('div').children
+// console.log(temp)
+// //copy
+// let divPokedex = document.getElementById('pokedex')
+
+
+
+// for (let i = 0; i < 150; i++) {
+//     let newDiv = document.createElement('div')
+//     newDiv.className = 'pokeCard'
+//     let newImgElement = document.createElement('img')
+//     newImgElement.className = 'pokeImg'
+//     newImgElement.src = pokeImg[poke[i].name.english]
+//     let pElement = document.createElement('p')
+//     pElement.innerText = poke[i].name.english
+
+//     //add to pokeCard
+//     newDiv.append(newImgElement)
+//     newDiv.append(pElement)
+//     //add to pokeDex
+//     divPokedex.append(newDiv)
+
+// }
