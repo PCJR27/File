@@ -162,41 +162,76 @@ const { template } = require('@babel/core')
 // return status
 // }
 //64130500049 ปอชา 
-function countCovidStatus(covidStatusArray) {
-  let result = {}
-  let low = 0
-  let high = 0
-  let posi = 0
-  if (covidStatusArray === null || covidStatusArray === undefined) {
+// function countCovidStatus(covidStatusArray) {
+//   let result = {}
+//   let low = 0
+//   let high = 0
+//   let posi = 0
+//   if (covidStatusArray === null || covidStatusArray === undefined) {
+//     return undefined
+//   }
+//   if (covidStatusArray.lenght === 0) {
+//     return {}
+//   }
+//   for (let count of covidStatusArray) {
+
+//     switch (count) {
+//       case 'negative and low risk':
+//         low++
+//         break
+//       case 'negative and high risk':
+//         high++
+//         break
+//       case 'positive':
+//         posi++
+//     }
+
+//   }
+//   if(low>0){
+//     result['negative and low risk']=low
+//   }
+//   if(high>0){
+//     result['negative and high risk']=high
+//   }
+//   if(posi>0){
+//     result.positive=posi
+//   }
+//   return result
+
+// }
+
+//64130500049 ปอชา มี้เจริญ
+function countCovidStatus(covidStatusArray){
+let result ={}
+let low =0
+let posi=0
+let high=0
+  if(covidStatusArray ===null || covidStatusArray===undefined){
     return undefined
   }
-  if (covidStatusArray.lenght === 0) {
+  if(covidStatusArray.lenght===0){
     return {}
   }
-  for (let count of covidStatusArray) {
+for (count of covidStatusArray){
+  switch(count){
+    case 'negative and low risk':low++
+    break
+    case 'negative and high risk' : high++
+    break
+    case 'positive' : posi++
+  }
 
-    switch (count) {
-      case 'negative and low risk':
-        low++
-        break
-      case 'negative and high risk':
-        high++
-        break
-      case 'positive':
-        posi++
-    }
-
-  }
-  if(low>0){
-    result['negative and low risk']=low
-  }
-  if(high>0){
-    result['negative and high risk']=high
-  }
-  if(posi>0){
-    result.positive=posi
-  }
-  return result
+}
+if(low>0){
+  result['negative and low risk']=low
+}
+if(high>0){
+  result['negative and high risk']=high
+}
+if(posi>0){
+  result.positive=posi
+}
+return result
 
 }
 module.exports = countCovidStatus
